@@ -5,5 +5,5 @@ import com.learndeutsch.exercises.entity.Exercise;
 import java.util.List;
 
 public interface ExerciseService {
-    List<Exercise> getExercisesByCategory(String category);
+    List<Exercise> getExercisesByECategory(String category);
 }

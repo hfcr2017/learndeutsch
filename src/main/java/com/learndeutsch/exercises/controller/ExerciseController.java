@@ -17,9 +17,9 @@ public class ExerciseController {
     @Autowired
     private ExerciseService exerciseService;
 
-    @GetMapping("execises/{category}")
-    public ResponseEntity<List<Exercise>> getExeciseByCategory(@PathVariable("category") String category){
-        List<Exercise> exerciseList = exerciseService.getExercisesByCategory(category);
+    @GetMapping("exercises/{category}")
+    public ResponseEntity<List<Exercise>> getExeciseByECategory(@PathVariable("category") String category){
+        List<Exercise> exerciseList = exerciseService.getExercisesByECategory(category);
         return new ResponseEntity<List<Exercise>>(exerciseList, HttpStatus.OK);
     }
 }

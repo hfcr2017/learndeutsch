@@ -15,9 +15,9 @@ public class ExerciseServiceImpl implements ExerciseService {
     private ExerciseRepository exerciseRepository;
 
     @Override
-    public List<Exercise> getExercisesByCategory(String category) {
+    public List<Exercise> getExercisesByECategory(String category) {
         List<Exercise> exerciseList = new ArrayList<>();
-        exerciseRepository.findByCategory(category).forEach(e -> exerciseList.add(e));
+        exerciseRepository.findByECategory(category).forEach(e -> exerciseList.add(e));
         return exerciseList;
     }
 }

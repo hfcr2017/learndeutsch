@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="exercises")
+@Table(name="EXERCISES")
 public class Exercise implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -31,4 +31,58 @@ public class Exercise implements Serializable {
     @Column(name="E_CATEGORY")
     private String eCategory;
 
+    public long getExerciseId() {
+        return exerciseId;
+    }
+    public void setExerciseId(long exerciseId) {
+        this.exerciseId = exerciseId;
+    }
+
+    public String geteFirstPart() {
+        return eFirstPart;
+    }
+
+    public void seteFirstPart(String eFirstPart) {
+        this.eFirstPart = eFirstPart;
+    }
+
+    public String geteSecondPart() {
+        return eSecondPart;
+    }
+
+    public void seteSecondPart(String eSecondPart) {
+        this.eSecondPart = eSecondPart;
+    }
+
+    public String geteSolution() {
+        return eSolution;
+    }
+
+    public void seteSolution(String eSolution) {
+        this.eSolution = eSolution;
+    }
+
+    public String geteOption1() {
+        return eOption1;
+    }
+
+    public void seteOption1(String eOption1) {
+        this.eOption1 = eOption1;
+    }
+
+    public String geteOption2() {
+        return eOption2;
+    }
+
+    public void seteOption2(String eOption2) {
+        this.eOption2 = eOption2;
+    }
+
+    public String geteCategory() {
+        return eCategory;
+    }
+
+    public void seteCategory(String eCategory) {
+        this.eCategory = eCategory;
+    }
 }
