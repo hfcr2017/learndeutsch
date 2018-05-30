@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ExerciseRepository extends CrudRepository<Exercise, Long>{
     List<Exercise> findByECategory(String category);
+
+    List<Exercise> findByEFirstPartAndESecondPart(String eFirstPart, String eSecondPart);
 }
