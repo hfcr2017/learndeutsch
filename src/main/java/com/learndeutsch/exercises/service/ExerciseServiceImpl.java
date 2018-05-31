@@ -31,4 +31,20 @@ public class ExerciseServiceImpl implements ExerciseService {
             return true;
         }
     }
+
+    @Override
+    public boolean updateExercise(Exercise exercise) {
+        List<Exercise> exerciseList = exerciseRepository.findByEFirstPartAndESecondPart(exercise.geteFirstPart(),exercise.geteSecondPart());
+        if (exerciseList.size() == 1) {
+            exerciseRepository.save(exercise);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void deleteExercise(Long id) {
+        exerciseRepository.deleteById(id);
+    }
 }
