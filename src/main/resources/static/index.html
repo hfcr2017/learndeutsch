@@ -39,7 +39,7 @@
         }
 
         function getNounList(){
-            $.getJSON("http://localhost:8080/noun", function (data) {
+            $.getJSON("https://learn-deutsch.herokuapp.com/noun", function (data) {
                 nounsArray = data;
                 getNewNounFromList();
             });
