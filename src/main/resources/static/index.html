@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deutsch Prufung</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .btn-success {
+            visibility: hidden;
+        }
+    </style>
+    <script>
+        var nounNumber;
+        var nounsArray;
+        var article;
+        var noun;
+        var count = 0;
+
+        function getRandomNumber(minValue, maxValue){
+            return Math.floor(Math.random() * (maxValue-minValue) + minValue);
+        };
+
+        function compareArticle(buttonId) {
+            console.log(buttonId)
+
+            if (buttonId == article) {
+                count++;
+                $("#count").text(count);
+                if (nounsArray.length > 1) {
+                    nounsArray.splice(nounNumber, nounNumber+1);
+                    getNewNounFromList();
+                } else {
+                    console.log("Finished");
+                    $("#repeatBtn").css("visibility", "visible");
+                }
+            }
+        }
+
+        function getNounList(){
+            $.getJSON("http://localhost:8080/noun", function (data) {
+                nounsArray = data;
+                getNewNounFromList();
+            });
+        }
+
+        function getNewNounFromList(){
+            nounNumber = getRandomNumber(0,nounsArray.length);
+            setNoun(nounsArray[nounNumber].noun);
+            setArticle(nounsArray[nounNumber].article);
+            $('#noun').text(noun);
+        }
+
+        function setArticle(article) {
+            this.article = article;
+        }
+
+        function setNoun(noun) {
+            this.noun = noun;
+        }
+
+        function repeat(){
+            count = 0;
+            $("#count").text(count);
+            getNounList();
+        }
+
+        $(document).ready(
+            getNounList()
+        );
+
+    </script>
+</head>
+<body>
+    <div class="well">
+        <h3 id="noun"></h3>
+        <div>
+            <button id="der" type="button" class="btn btn-primary" onclick="compareArticle(this.id)">Der</button>
+            <button id="die" type="button" class="btn btn-primary" onclick="compareArticle(this.id)">Die</button>
+            <button id="das" type="button" class="btn btn-primary" onclick="compareArticle(this.id)">Das</button>
+        </div>
+        <h5> Score = <span id="count">0</span></h5>
+        <button id="repeatBtn" class="btn-success" onclick="repeat()">Repeat</button>
+    </div>
+</body>
+</html>
