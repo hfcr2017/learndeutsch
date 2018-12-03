@@ -18,7 +18,7 @@ public class ExerciseController {
     @Autowired
     private NounsService nounsService;
 
-    @CrossOrigin(origins = "http://localhost:63343")
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("noun")
     public ResponseEntity<List<Nouns>> getNouns(){
         List<Nouns> nounsList = nounsService.getNounsWithArticle();
